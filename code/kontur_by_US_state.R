@@ -44,9 +44,13 @@ tigris_us <- tigris_us %>%
 census <- get_decennial(geography = "state",
                         variables = "P1_001N",
                         year = 2020,
-                        sumfile = "pl")
+                        sumfile = "pl",
+                        geometry = TRUE,
+                        keep_geo_vars = TRUE)
 census <- census %>%
   filter(STUSPS != "PR")
 
+# Align Coordinate Reference Systems (CRS)
 
->>>>>>> issue_2
+tigris_us <- st_transform(tigris_us, 3857)
+census <- st_transform(census, 3857)

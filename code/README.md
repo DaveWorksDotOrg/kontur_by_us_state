@@ -23,3 +23,12 @@ Returns a simple feature collection of multi-polygons. Note, this data covers al
 ## Load population data using tidycensus package.
 
 Note this data covers the 50 US states plus the District of Columbia AND Puerto Rico so we will need to filter to match the kontur data.
+
+## Align Coordinate Reference Systems (CRS)
+
+CRS for tigris and census data need to match the kontur data in order to use geospatial information during analysis.
+
+`st_crs(kontur)     # CRS: WGS 84     EPSG: 3857
+st_crs(tigris_us)  # CRS: NAD83      EPSG: 4269
+st_crs(census)     # CRS: NAD83      EPSG: 4269`
+
